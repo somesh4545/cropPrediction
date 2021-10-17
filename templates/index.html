@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .container {
+        /* height: 80vh; */
+        width: 80%;
+        padding: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .result {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="result" align="center">
+      {% if result %}
+      <p style="font-size: 25px; text-transform: capitalize">
+        Predicted crop: {{ result }}
+      </p>
+      {% else %}
+      <h1>Crop prediction</h1>
+      {% endif %}
+    </div>
+    <div class="container">
+      <form action="{{ url_for('main') }}" id="form" method="POST">
+        <div class="form-group">
+          <label for="email">Nitrogen:</label>
+          <input type="text" class="form-control" name="Nitrogen" />
+        </div>
+        <div class="form-group">
+          <label for="P">P:</label>
+          <input type="text" class="form-control" name="P" />
+        </div>
+        <div class="form-group">
+          <label for="K">K:</label>
+          <input type="text" class="form-control" name="K" />
+        </div>
+        <div class="form-group">
+          <label for="Temperature">Temperature:</label>
+          <input type="text" class="form-control" name="Temperature" />
+        </div>
+        <div class="form-group">
+          <label for="Humidity">Humidity:</label>
+          <input type="text" class="form-control" name="Humidity" />
+        </div>
+        <div class="form-group">
+          <label for="PH">PH:</label>
+          <input type="text" class="form-control" name="PH" />
+        </div>
+        <div class="form-group">
+          <label for="Rainfall">Rainfall:</label>
+          <input type="text" class="form-control" name="Rainfall" />
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
