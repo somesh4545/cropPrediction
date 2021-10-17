@@ -21,10 +21,11 @@ def main():
         Humidity = request.form['Humidity']
         PH = request.form['PH']
         Rainfall = request.form['Rainfall']
-        input = pandas.DataFrame([[Nitrogen, P, K, Temperature, Humidity, PH, Rainfall]])
+        input = pandas.DataFrame(
+            [[Nitrogen, P, K, Temperature, Humidity, PH, Rainfall]])
         prediction = model.predict(input)[0]
         print(prediction)
-        return render_template("index.html", result= prediction)    
+        return render_template("index.html", result=prediction)
 
 
 if __name__ == '__main__':
